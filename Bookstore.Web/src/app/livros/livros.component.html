@@ -26,7 +26,7 @@
         <td>{{ livro.year }} </td>
         <td>
           <button [routerLink]="[livro.id]" title="Editar" type="button" class="btn btn-link"><i class="fas fa-edit"></i></button>
-          <button (click)="delete(livro)" [disabled]="isDeleting" title="Deletar" type="button" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+          <button (click)="delete(livro)" title="Deletar" type="button" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>
     </tbody>
