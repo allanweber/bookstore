@@ -59,6 +59,19 @@ namespace Bookstore.Framework.Controllers
             return this.Ok(result);
         }
 
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var entity = await this.Repository.GetAsync(id);
+
+            if (entity == null) return NotFound();
+
+            var dto = Mapper.Map<TEntity, TGetListDto>(entity);
+
+            return this.Ok(dto);
+        }
+
         [HttpDelete]
         [Route("{id:int}")]
         public async Task<IActionResult> Delete(int id)

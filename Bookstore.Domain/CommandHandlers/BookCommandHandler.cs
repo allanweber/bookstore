@@ -45,6 +45,13 @@ namespace Bookstore.Domain.CommandHandlers
             ICommandResult result = this.validate(entity);
             if (result.IsFailure) return result;
 
+            NumberMoreThanZero numberMoreThanZero = new NumberMoreThanZero(nameof(entity.Id));
+            if (!numberMoreThanZero.IsSatisfiedBy(entity.Id))
+            {
+                result.Result = numberMoreThanZero.Description;
+                return result;
+            }
+
             await this.BookRepository.UpdateAsync(entity);
 
             await this.BookRepository.CommitAsync();
@@ -59,6 +66,14 @@ namespace Bookstore.Domain.CommandHandlers
             if (entity == null)
             {
                 return new FailureResult { Result = "Livro não encontrado" };
+            }
+
+            NumberMoreThanZero numberMoreThanZero = new NumberMoreThanZero(nameof(entity.Id));
+            if (!numberMoreThanZero.IsSatisfiedBy(entity.Id))
+            {
+                ICommandResult result = new FailureResult();
+                result.Result = numberMoreThanZero.Description;
+                return result;
             }
 
             await this.BookRepository.DeleteAsync(entity);

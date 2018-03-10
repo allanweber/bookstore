@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Bookstore.Framework.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using Xunit;
@@ -17,6 +17,14 @@ namespace Bookstore.Framework.Test
     {
         public WebHostFixture()
         {
+            JsonConvert.DefaultSettings = () =>
+            {
+                return new JsonSerializerSettings
+                {
+                    ContractResolver = new PrivateSetterCamelCasePropertyNamesContractResolver()
+                };
+            };
+
             ServiceCollectionExtensions.UseStaticRegistration = false;
             this.TestServer = new TestServer(new WebHostBuilder()
                 .UseEnvironment("IntegrationTests")

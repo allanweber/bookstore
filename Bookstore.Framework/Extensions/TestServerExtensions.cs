@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.TestHost;
 using System;
 
-namespace Bookstore.Framework.Extensions
+namespace Bookstore.Framework.Test
 {
     public static class TestServerExtensions
     {

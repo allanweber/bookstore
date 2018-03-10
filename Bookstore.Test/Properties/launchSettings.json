@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Bookstore.Test": {
+      "commandName": "Project"
+    }
+  }
+}
