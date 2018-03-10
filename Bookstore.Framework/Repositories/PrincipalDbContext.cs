@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Bookstore.Framework.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.Framework.Repositories
 {
@@ -11,7 +12,7 @@ namespace Bookstore.Framework.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfiguration<Technology>(new TechnologyMap());
+            modelBuilder.ApplyConfiguration();
 
             base.OnModelCreating(modelBuilder);
         }

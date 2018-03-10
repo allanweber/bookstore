@@ -29,6 +29,10 @@ namespace Bookstore.Framework.Controllers
             this.Repository = repository;
         }
 
+        public BaseCrudController()
+        {
+        }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
