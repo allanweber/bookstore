@@ -6,6 +6,7 @@ import {
   Response,
   ResponseContentType
 } from '@angular/http';
+import { MessageService } from './message.service';
 import { Observable } from 'rxjs/Observable';
 declare var swal: any;
 
@@ -24,11 +25,11 @@ export class BaseRequests {
     const errorObj = error.json();
     console.error('Ocorreu um erro', errorObj);
 
-    swal({
-      type: 'error',
-      title: 'Ocorreu um erro',
-      text: errorObj.Message,
-    });
+    if (errorObj.result) {
+      MessageService.ErrorToaster(errorObj.result);
+    } else {
+      MessageService.fatalError(errorObj.Message);
+    }
 
     return Observable.throw(error);
   }

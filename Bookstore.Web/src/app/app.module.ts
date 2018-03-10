@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppConfig, AppConfigFactory } from './core/app-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundedComponent } from './page-not-founded/page-not-founded.component';
@@ -23,6 +23,8 @@ import { LivroService } from './livros/shared/services/livro.service';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     routing,
   ],
   providers: [

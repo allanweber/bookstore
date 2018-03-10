@@ -10,6 +10,7 @@ const appRoutes: Routes = [
     component: LivrosComponent
   },
   { path: 'livros/:livro', component: LivroDetailComponent },
+  { path: 'livros/novo', component: LivroDetailComponent },
   { path: '', redirectTo: '/livros', pathMatch: 'full' },
   { path: '**', component: PageNotFoundedComponent }
 ];

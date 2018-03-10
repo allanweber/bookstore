@@ -10,8 +10,8 @@ export class AppConfig {
 
   constructor(private http: Http) {}
 
-  public get footballApi(): string {
-    return this.getConfig('footballApi');
+  public get bookstoreApi(): string {
+    return this.getConfig('bookstoreApi');
   }
 
   public getConfig(key: any) {
